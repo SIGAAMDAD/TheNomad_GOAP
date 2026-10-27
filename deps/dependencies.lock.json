@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "project": "TheNomad_GOAP",
+  "language": "C++17",
+  "dependencies": [
+    {
+      "name": "EABase",
+      "commit": "0699a15efdfd20b6cecf02153bfa5663decb653c",
+      "url": "https://github.com/electronicarts/EABase.git",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "EASTL",
+      "version": "3.27.01",
+      "commit": "e323f67e5d93fdadcd44f7998069d804697b1945",
+      "url": "https://github.com/electronicarts/EASTL.git",
+      "license": "BSD-3-Clause"
+    }
+  ],
+  "reference": {
+    "name": "FEAR_SDK",
+    "version": "1.08",
+    "archive": "Fear-SDK-1.08-master.zip",
+    "sha256": "82a5b7f2f2553e435789be8c9a71e016f7015e95a5e2f4cb256d1ab84aa8aff6",
+    "availability": "owner supplied, local reference only"
+  }
+}
