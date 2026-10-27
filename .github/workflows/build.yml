@@ -1,0 +1,48 @@
+name: GOAP G00 — C++17 dependencies
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    name: ${{ matrix.label }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {label: Linux GCC, os: ubuntu-latest, preset: linux-gcc}
+          - {label: Windows MSVC static CRT, os: windows-latest, preset: windows-msvc}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: ilammy/msvc-dev-cmd@v1
+        if: runner.os == 'Windows'
+        with:
+          arch: x64
+      - name: Verify exact dependency pins
+        run: python tools/verify_dependencies.py
+      - name: Configure
+        run: cmake --preset ${{ matrix.preset }}
+      - name: Compile
+        run: cmake --build --preset ${{ matrix.preset }} --parallel 2
+      - name: Test
+        run: ctest --preset ${{ matrix.preset }}
+      - name: Write build provenance
+        run: python tools/build_manifest.py --preset ${{ matrix.preset }}
+      - name: Upload toolchain artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goap-toolchain-${{ matrix.preset }}-${{ github.sha }}
+          path: |
+            build/${{ matrix.preset }}/bin/
+            build/${{ matrix.preset }}/build-manifest.json
+            deps/dependencies.lock.json
+          if-no-files-found: warn
+          retention-days: 30
