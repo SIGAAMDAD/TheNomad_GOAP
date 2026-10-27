@@ -15,6 +15,7 @@ jobs:
       matrix:
         include:
           - {label: Linux GCC, os: ubuntu-latest, preset: linux-gcc}
+          - {label: Linux Clang, os: ubuntu-latest, preset: linux-clang}
           - {label: Windows MSVC static CRT, os: windows-latest, preset: windows-msvc}
     steps:
       - uses: actions/checkout@v4
