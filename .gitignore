@@ -1,0 +1,12 @@
+build/
+.cache/
+.deps/
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+compile_commands.json
+__pycache__/
+*.pyc
+fear_publictools_108.exe
