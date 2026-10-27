@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 cmake_policy(SET CMP0091 NEW)
 option(NMDGOAP_MSVC_STATIC_CRT "Use static MSVC CRT" ON)
-if(MSVC AND NMDGOAP_MSVC_STATIC_CRT)
+if(NMDGOAP_MSVC_STATIC_CRT)
   set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
 project(TheNomad_GOAP VERSION 0.0.0 LANGUAGES CXX)
