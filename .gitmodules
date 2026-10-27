@@ -1,0 +1,3 @@
+[submodule "third_party/fear_sdk"]
+	path = third_party/fear_sdk
+	url = https://github.com/xfw5/Fear-SDK-1.08.git
