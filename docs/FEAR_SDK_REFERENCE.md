@@ -1,6 +1,6 @@
 # FEAR SDK 1.08 reference artifact
 
-The authoritative G00 comparison input is the owner-provided **Fear-SDK-1.08-master.zip**.
+The G00 reference is pinned in this repository as the optional Git submodule **third_party/fear_sdk**, pointing to `xfw5/Fear-SDK-1.08` at commit `2fc3557b0037d5fe01ac607b907d4b8511b9e4b2`. The owner-provided **Fear-SDK-1.08-master.zip** remains an independently hashed local input.
 
 - SHA256: 82a5b7f2f2553e435789be8c9a71e016f7015e95a5e2f4cb256d1ab84aa8aff6
 - Input size: 27,575,224 bytes
@@ -11,21 +11,27 @@ The authoritative G00 comparison input is the owner-provided **Fear-SDK-1.08-mas
 
 ## Staging a complete SDK reference locally
 
-From a repository checkout, run:
+To obtain the pinned public reference source, run:
+
+    git submodule update --init third_party/fear_sdk
+
+The normal build does not require or compile this submodule.
+
+To stage the owner-provided, independently hashed ZIP, run:
 
     python tools/stage_fear_sdk.py --archive /path/to/Fear-SDK-1.08-master.zip
 
 The tool checks the exact SHA256 from deps/dependencies.lock.json, copies the
-archive into **third_party/fear_sdk/**, and creates a local reference-manifest.json.
+archive into **.cache/fear-sdk-archive/**, and creates a local reference-manifest.json.
 The staged files are gitignored and cannot become part of normal source PRs.
 Extract the checked archive separately for reference; never execute installers
 in CI. A different archive must be reviewed and its lock updated.
 
-A full SDK binary is not present on the GitHub main branch. The project
-archive exists in the owner's source inputs. GitHub Actions build artifacts
-publish only independently compiled toolchain binaries and provenance,
-not the third-party FEAR SDK. A repository/source SDK mirror would require
-a reviewed redistribution basis and a binary upload mechanism.
+The repository stores a **gitlink pointer** to the existing third-party SDK mirror,
+not vendored FEAR source bytes. Checking out submodules obtains the exact
+pinned original reference from that remote. The independently hashed owner
+ZIP remains a separate local input. GitHub Actions publish only GOAP
+build-chain artifacts, not FEAR SDK contents.
 
 ## Reference symbol map
 

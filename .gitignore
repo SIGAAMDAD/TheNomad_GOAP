@@ -9,5 +9,4 @@ build/
 compile_commands.json
 __pycache__/
 *.pyc
-third_party/fear_sdk/
 fear_publictools_108.exe

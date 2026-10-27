@@ -33,7 +33,7 @@ def main():
     digest=file_hash(source)
     if digest!=EXPECTED and not args.allow_unpinned:
         p.error("FEAR SDK SHA256 mismatch; verify source and reviewed manifest")
-    target=ROOT/"third_party"/"fear_sdk"
+    target=ROOT/".cache"/"fear-sdk-archive"
     target.mkdir(parents=True,exist_ok=True)
     dest=target/source.name
     if source!=dest.resolve():

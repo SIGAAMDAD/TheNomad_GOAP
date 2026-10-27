@@ -54,3 +54,12 @@ the owner-frozen G02 export contract.
 platforms, exact dependency SHAs are evidenced, source authority is
 frozen, SDK reference is staged for engineers with access, and the
 approved GOAP source work order is admitted by the Studio.
+
+## Pinned FEAR reference access
+
+The SDK is available as an **optional Git submodule** pinned to
+`xfw5/Fear-SDK-1.08@2fc3557b0037d5fe01ac607b907d4b8511b9e4b2`.
+Use `git submodule update --init third_party/fear_sdk` on a worker machine
+when G00 source comparison is assigned. CI deliberately does not recurse
+into the submodule, because the clean standalone GOAP build must remain
+independent of LithTech and third-party game SDKs.

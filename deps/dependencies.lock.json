@@ -22,6 +22,8 @@
     "version": "1.08",
     "archive": "Fear-SDK-1.08-master.zip",
     "sha256": "82a5b7f2f2553e435789be8c9a71e016f7015e95a5e2f4cb256d1ab84aa8aff6",
-    "availability": "owner supplied, local reference only"
+    "availability": "Optional pinned git submodule; owner ZIP separately SHA256 verified",
+    "upstream_repo": "https://github.com/xfw5/Fear-SDK-1.08.git",
+    "upstream_commit": "2fc3557b0037d5fe01ac607b907d4b8511b9e4b2"
   }
 }

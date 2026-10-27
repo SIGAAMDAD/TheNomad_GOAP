@@ -15,3 +15,6 @@ not a completed GOAP solver or C ABI DLL.
 
 All GoAP native source and CI commits belong in this repository, not
 TheNomad_Studio. The Studio provides job dispatch and review receipts.
+
+FEAR reference checkout: `git submodule update --init third_party/fear_sdk`.
+The submodule is an upstream source pointer, not code linked into GOAP.
