@@ -11,6 +11,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 option(NMDGOAP_BUILD_SMOKE "Build EASTL/EABase smoke fixture" ON)
+# EABase uses cmake_minimum_required(VERSION 3.1). CMake 4 removed
+# compatibility below 3.5; retain the immutable upstream source.
+if(CMAKE_VERSION VERSION_GREATER_EQUAL "4.0")
+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "Legacy EABase compatibility")
+endif()
 include(cmake/Dependencies.cmake)
 add_library(nmdgoap_build_contract INTERFACE)
 target_compile_features(nmdgoap_build_contract INTERFACE cxx_std_17)
